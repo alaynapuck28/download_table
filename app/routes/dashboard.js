@@ -1,4 +1,3 @@
-
 import Route from '@ember/routing/route';
 import { service } from '@ember/service';
 import fetch from 'fetch';
@@ -9,7 +8,6 @@ export default class DashboardRoute extends Route {
   async model() {
     let response = await fetch('/api/data.json');
     let data = await response.json();
-    console.log(data);
 
     let records = data.dataRow.map((datum) => {
       return this.store.createRecord('data-row', {
@@ -17,11 +15,10 @@ export default class DashboardRoute extends Route {
         path: datum.path,
         device: datum.device,
         status: datum.status,
-        isChecked: datum.isChecked
+        isChecked: datum.isChecked || false,
       });
     });
 
-    // Wait for all promises to resolve and then return the array of records
-    return Promise.all(records);
+    return records;
   }
 }

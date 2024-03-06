@@ -1,0 +1,15 @@
+<div class="modal-overlay">
+  <div class="modal">
+    <div class="modal-header">
+      <h3>{{@title}}</h3>
+      <button
+        class="close-button"
+        type="button"
+        {{on "click" this.closeModal}}
+      >Close</button>
+    </div>
+    <div class="modal-body">
+      <p>{{@message}}</p>
+    </div>
+  </div>
+</div>

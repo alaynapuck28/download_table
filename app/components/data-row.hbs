@@ -1,7 +1,31 @@
-
- <tr>
-  <td><input type="checkbox" checked={{@dataRow.isChecked}} {{on "change" this.handleCheckboxChanged}}></td>
-        <td>{{@name}}</td>
-         <td>{{@status}}</td>
-         
-      </tr>
+<tr {{on "click" this.handleClick}}>
+  <td>
+    <input
+      type="checkbox"
+      disabled={{this.isDisabled}}
+      checked={{this.isChecked}}
+      {{on "change" this.handleCheckboxChanged}}
+    />
+  </td>
+  <td>{{@name}}</td>
+  <td>{{@dataRow?.device}}</td>
+  <td>{{@dataRow?.path}}</td>
+  <td>
+    {{#if (eq @status "available")}}
+      <i
+        style="text-align: left; color: rgb(77, 195, 77);"
+        class="fas fa-check-circle icon"
+      ></i>
+    {{else}}
+      <i style="color: lightgray;" class="fa-solid fa-clock icon"></i>
+    {{/if}}
+    {{@status}}
+  </td>
+</tr>
+{{#if this.showModal}}
+  <CustomModal
+    @title="Download Unavailable"
+    @message="Sorry, download is not available at the moment."
+    @onClose={{this.closeModal}}
+  />
+{{/if}}
