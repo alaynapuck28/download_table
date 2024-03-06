@@ -50,6 +50,7 @@ export default class ApplicationController extends Controller {
   }
 
   updateCheckedStatus() {
+    //controls state of select all checkbox
     const availableRows = this.model.filter(
       (row) => row.status === 'available',
     );

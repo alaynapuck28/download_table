@@ -8,21 +8,22 @@ module('Integration | Component | data-row', function (hooks) {
   setupRenderingTest(hooks);
 
   test('it renders', async function (assert) {
-    // Set up test data with all required attributes
     this.set('rowData', {
       name: 'Example Name',
       path: '/example/path',
       device: 'Example Device',
       status: 'available',
-      isChecked: true, // Include isChecked property
+      isChecked: true,
     });
 
     // Render the component with test data
-    await render(hbs`<DataRow @dataRow={{this.rowData}} />`);
+    await render(
+      hbs`<DataRow @dataRow={{this.rowData}} @name={{this.rowData.name}} @status={{this.rowData.status}}/>`,
+    );
 
     // Assert that the component renders without errors
     assert.dom('.data-row').exists();
-    assert.dom('.data-row-name').hasText('Example Name');
-    // Add more assertions for other properties as needed
+    assert.dom('.data-name').hasText('Example Name');
+    assert.dom('td:nth-child(5)').hasText('available');
   });
 });

@@ -1,4 +1,4 @@
-<tr {{on "click" this.handleClick}}>
+<tr class="data-row" {{on "click" this.handleClick}}>
   <td>
     <input
       type="checkbox"
@@ -7,9 +7,9 @@
       {{on "change" this.handleCheckboxChanged}}
     />
   </td>
-  <td>{{@name}}</td>
-  <td>{{@dataRow?.device}}</td>
-  <td>{{@dataRow?.path}}</td>
+  <td class="data-name">{{@name}}</td>
+  <td>{{@dataRow.device}}</td>
+  <td>{{@dataRow.path}}</td>
   <td>
     {{#if (eq @status "available")}}
       <i
