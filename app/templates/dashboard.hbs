@@ -13,5 +13,6 @@
     {{#each @model as |dataRow|}}
      <DataRow @name="{{dataRow.name}}" @status="{{dataRow.status}}" @dataRow={{dataRow}} @updateChecked={{this.updateChecked}}/>
     {{/each}}
+    
   </tbody>
 </table>
