@@ -1,6 +1,8 @@
-<tr class="data-row" {{on "click" this.handleClick}}>
+<tr tabindex="0" class="data-row" {{on "click" this.handleClick}}>
   <td>
     <input
+      aria-label="select"
+      label="checkbox"
       type="checkbox"
       disabled={{this.isDisabled}}
       checked={{this.isChecked}}
@@ -12,12 +14,9 @@
   <td>{{@dataRow.path}}</td>
   <td>
     {{#if (eq @status "available")}}
-      <i
-        style="text-align: left; color: rgb(77, 195, 77);"
-        class="fas fa-check-circle icon"
-      ></i>
+      <i id="available-status" class="fas fa-check-circle icon"></i>
     {{else}}
-      <i style="color: lightgray;" class="fa-solid fa-clock icon"></i>
+      <i id="scheduled-status" class="fa-solid fa-clock icon"></i>
     {{/if}}
     {{@status}}
   </td>
