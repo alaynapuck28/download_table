@@ -10,11 +10,6 @@ module('Unit | Controller | dashboard', function (hooks) {
     let controller = this.owner.lookup('controller:dashboard');
     assert.ok(controller);
   });
-
-  test('it exists', function (assert) {
-    let controller = this.owner.lookup('controller:dashboard');
-    assert.ok(controller);
-  });
   test('show modal should be true after clicking download', async function (assert) {
     let controller = this.owner.lookup('controller:dashboard');
     controller.showModal = false;
@@ -24,7 +19,7 @@ module('Unit | Controller | dashboard', function (hooks) {
 
     await controller.downloadSelectedRows();
 
-    assert.equal(controller.showModal, true);
+    assert.true(controller.showModal, true);
   });
   test('it sets modal message correctly when no selected rows are available', function (assert) {
     // Arrange
@@ -37,7 +32,7 @@ module('Unit | Controller | dashboard', function (hooks) {
 
     controller.downloadSelectedRows();
 
-    assert.equal(
+    assert.deepEqual(
       controller.modalMessage,
       'Please select files to download',
       'Modal message is set correctly',
@@ -62,7 +57,7 @@ module('Unit | Controller | dashboard', function (hooks) {
 
     controller.downloadSelectedRows();
 
-    assert.equal(
+    assert.deepEqual(
       controller.modalMessage,
       'test path - test device',
       'Modal message set correctly',
